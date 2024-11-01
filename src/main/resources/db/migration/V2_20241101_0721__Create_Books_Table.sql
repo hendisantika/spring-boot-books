@@ -1,5 +1,5 @@
 CREATE TABLE Books (
-                       book_id SERIAL PRIMARY KEY,
+                       book_id bigserial PRIMARY KEY,
                        title VARCHAR(100) NOT NULL,
                        author VARCHAR(100) NOT NULL,
                        isbn VARCHAR(20) UNIQUE NOT NULL,
