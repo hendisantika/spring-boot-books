@@ -3,7 +3,7 @@ services:
     image: postgres:17-alpine3.20
     container_name: postgres17
     environment:
-      POSTGRES_DB: onlinebookstore
+      POSTGRES_DB: bookDB
       POSTGRES_USER: hendisantika
       POSTGRES_PASSWORD: 53cret
     ports:
