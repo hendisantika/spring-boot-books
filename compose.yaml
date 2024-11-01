@@ -1,5 +1,5 @@
 services:
-  postgres:
+  postgres17:
     image: postgres:17-alpine3.20
     container_name: postgres17
     environment:
@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./postgres17_data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4:8.11.0

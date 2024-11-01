@@ -6,7 +6,7 @@
       "Port": 5432,
       "Username": "hendisantika",
       "Password": "53cret",
-      "Host": "postgres",
+      "Host": "postgres17",
       "SSLMode": "prefer",
       "MaintenanceDB": "bookDB",
       "PassFile": "/tmp/pgpassfile"
