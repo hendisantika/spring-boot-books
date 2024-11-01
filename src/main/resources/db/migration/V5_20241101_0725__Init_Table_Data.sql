@@ -10,7 +10,7 @@ INSERT INTO Books (title, author, isbn, published_date, genre) VALUES
                                                                    ('1984', 'George Orwell', '9780451524935', '1949-06-08', 'Dystopian');
 
 -- Insert Book Instances
-INSERT INTO BookInstances (book_id, status, due_date) VALUES
+INSERT INTO book_instances (book_id, status, due_date) VALUES
                                                           (1, 'available', NULL),
                                                           (1, 'checked_out', '2024-07-15'),
                                                           (2, 'available', NULL),
