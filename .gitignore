@@ -19,6 +19,8 @@ bin/
 ### IntelliJ IDEA ###
 .idea
 logs
+postgres16_data
+postgres17_data
 *.iws
 *.iml
 *.ipr
