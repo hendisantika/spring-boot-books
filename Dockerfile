@@ -1,4 +1,4 @@
-FROM gradle:jdk22 as build
+FROM gradle:jdk25 AS build
 
 LABEL authors="hendisantika"
 # Copy the Gradle project into the image
@@ -9,7 +9,7 @@ WORKDIR /home/gradle/src
 RUN gradle build --no-daemon -x test || ./gradlew build --no-daemon -x test
 
 # Use Amazon Corretto image for the runtime
-FROM amazoncorretto:22
+FROM amazoncorretto:25
 
 # Copy the built JAR from the build stage
 WORKDIR /app
