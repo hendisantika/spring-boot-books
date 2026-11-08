@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BooksControllerTest {
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>(
+    static PostgreSQLContainer postgres = new PostgreSQLContainer(
             "postgres:17-alpine3.20"
     );
     @LocalServerPort
