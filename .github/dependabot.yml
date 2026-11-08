@@ -1,13 +1,106 @@
+# Dependabot configuration
+# Docs: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
 version: 2
+
 updates:
+  # Gradle dependencies (build.gradle)
   - package-ecosystem: gradle
     directory: "/"
     schedule:
       interval: daily
-      time: '05:00'
+      time: "05:00"
       timezone: Asia/Jakarta
     open-pull-requests-limit: 10
-  - package-ecosystem: "github-actions"
+    assignees:
+      - hendisantika
+    labels:
+      - dependencies
+      - java
+    commit-message:
+      prefix: "build(deps)"
+      prefix-development: "build(deps-dev)"
+      include: scope
+    groups:
+      spring-boot:
+        patterns:
+          - "org.springframework.boot*"
+          - "io.spring.dependency-management*"
+      flyway:
+        patterns:
+          - "org.flywaydb*"
+      testcontainers:
+        patterns:
+          - "org.testcontainers*"
+      test-libraries:
+        patterns:
+          - "io.rest-assured*"
+          - "org.junit*"
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  # GitHub Actions used in .github/workflows
+  - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Asia/Jakarta
+    open-pull-requests-limit: 5
+    assignees:
+      - hendisantika
+    labels:
+      - dependencies
+      - github_actions
+    commit-message:
+      prefix: "ci(deps)"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # Base images in Dockerfile
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Asia/Jakarta
+    open-pull-requests-limit: 5
+    assignees:
+      - hendisantika
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: "build(docker)"
+    ignore:
+      # Stay on the JDK 25 LTS line for build & runtime images
+      - dependency-name: "gradle"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "amazoncorretto"
+        update-types: ["version-update:semver-major"]
+
+  # Services in compose.yaml (PostgreSQL, pgAdmin)
+  - package-ecosystem: docker-compose
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Asia/Jakarta
+    open-pull-requests-limit: 5
+    assignees:
+      - hendisantika
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: "build(compose)"
+    groups:
+      compose-images:
+        patterns:
+          - "*"
